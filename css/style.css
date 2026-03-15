@@ -6,6 +6,30 @@
     padding: 0;
 }
 
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f5f5f4;
+  --color-background-tertiary: #e8e8e6;
+
+  --color-text-primary: #151515;
+  --color-text-secondary: #4a4a48;
+  --color-text-tertiary: #8a8a87;
+
+  --color-border-tertiary: rgba(0, 0, 0, 0.12);
+  --color-border-secondary: rgba(0, 0, 0, 0.25);
+  --color-border-primary: rgba(0, 0, 0, 0.35);
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+  --font-sans: 'DM Sans', sans-serif;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
 
 html, 
 body {
@@ -71,9 +95,13 @@ body {
     ;
 
 }
+nav {
+    width: 100%;
+}
 
 .main-header {
     grid-area: head;
+    width: 100%;
 }
 
 footer {
@@ -144,7 +172,7 @@ nav {
     align-items: center;
 }
 
-nav ul {
+.nav-links {
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -193,6 +221,168 @@ footer {
     font-size: 0.75rem;
 }
 
+/* =================
+-----NavBar-----
+================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  height: 56px;
+  width: 100%;
+  background: var(--color-background-primary);
+  border: none;                  /* ← remove the box border */
+  /* border-bottom: 0.5px solid var(--color-border-tertiary); ← bottom line only */
+  border-radius: 0;              /* ← remove rounded corners */
+  position: relative;
+  z-index: 10;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logo-container img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo-container h2 {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  gap: 1.25em;
+}
+
+.nav-links a {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--color-text-primary);
+}
+
+.hamburger {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.hamburger:hover {
+  background: var(--color-background-secondary);
+}
+
+.bar {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(.77,0,.18,1), opacity 0.2s, width 0.3s;
+  transform-origin: center;
+}
+
+.hamburger.open .bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.hamburger.open .bar:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* ── Mobile Drawer ── */
+
+.mobile-nav {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  width: 100%;
+  transition: max-height 0.35s cubic-bezier(.77,0,.18,1), opacity 0.25s;
+  background: var(--color-background-primary);
+  /* border-bottom: 0.5px solid var(--color-border-tertiary); */
+  border-radius: 0;              /* ← remove rounded corners */
+  position: relative;
+  z-index: 9;
+  margin-top: 0;                 /* ← remove the -4px overlap */
+}
+
+.mobile-nav.open {
+  max-height: 400px;
+  opacity: 1;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0.5rem 0 1rem;
+}
+
+.mobile-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-nav li a:hover {
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
+}
+
+.nav-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── Responsive: hide hamburger on wide screens ── */
+
+@media (min-width: 640px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: none !important;
+  }
+}
 /* =================
 -----Recent posts-----
 ==================*/
@@ -298,6 +488,12 @@ footer {
     }
 
 }
+
+@media (min-width: 640px) {
+    .hamburger { display: none; }
+    .nav-links { display: flex; }
+    .mobile-nav { display: none !important; }
+  }
 
 
 @media (min-width: 768px) {
