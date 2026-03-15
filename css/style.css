@@ -260,7 +260,17 @@ footer {
 -----Blog Page-----
 ==================*/
 
+.main-blog {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
 
+.blog-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 
 
 
@@ -316,14 +326,17 @@ footer {
 }
 
 @media (min-width: 1024px) {
-    .about-header nav {
+    .about-header nav ,
+    .blog-header nav,
+    .main-about,
+    .main-blog {
         max-width: 1024px;
         width: 100%;
         margin: 0 auto;
     }
-    .main-about {
+    /* .main-about {
         max-width: 1024px;
         width: 100%;
         margin: 0 auto;
-    }
+    } */
 }
