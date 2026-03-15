@@ -14,18 +14,43 @@
     <body>
         <header class="main-header blog-header">
             <nav>
-                <div class="logo-container">
-                    <img src="images/logo-img.png" alt="The blog's page logo">
-                    <h2>My learning journal</h2>
+                <div class="navbar">
+                    <div class="logo-container">
+                        <img src="images/logo-img.png" alt="The blog's page logo">
+                        <h2>My learning journal</h2>
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </button>
                 </div>
-                <ul class="nav-links">
+
+                <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+                <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                    <a href="index.html">
+                        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 6.5L8 2l6 4.5V14H10v-3H6v3H2V6.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                        </svg>
+                        Home
+                    </a>
                     </li>
                     <li>
-                        <a href="about.html">About Us</a>
+                    <a href="about.html">
+                        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.2"/>
+                        <path d="M2.5 13c0-2.485 2.462-4.5 5.5-4.5s5.5 2.015 5.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                        About Us
+                    </a>
                     </li>
                 </ul>
+                </div>
             </nav>
         </header>
 
@@ -108,5 +133,6 @@
             <p class="footer-text">My Learning Journal</p>
             <p class="footer-copy">Copyright ©2022</p>
         </footer>
+        <script src="script.js"></script>
     </body>
 </html>
